@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diablo 4 Endgame Stat Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #111;
+            color: #eee;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #222;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+        }
+        h1 {
+            text-align: center;
+            color: #c81e1e;
+            font-size: 24px;
+            margin-top: 0;
+        }
+        p.subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #c81e1e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #a01515;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #2a2a2a;
+            border: 1px solid #555;
+            border-radius: 4px;
+            display: none;
+        }
+        .result div {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        .capped { color: #4caf50; font-weight: bold; }
+        .under { color: #ff9800; font-weight: bold; }
+        
+        .adsense-placeholder {
+            margin-top: 25px;
+            padding: 20px;
+            text-align: center;
+            background-color: #333;
+            border: 1px dashed #777;
+            color: #aaa;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>D4 Stat Cap Calculator</h1>
+    <p class="subtitle">Quickly check how much more Armor or Resistance you need to hit the endgame caps.</p>
+
+    <div class="form-group">
+        <label for="armor">Current Total Armor (Cap: 9,230)</label>
+        <input type="number" id="armor" placeholder="e.g. 8500">
+    </div>
+
+    <div class="form-group">
+        <label for="resist">Lowest Elemental Resistance % (Cap: 70%)</label>
+        <input type="number" id="resist" placeholder="e.g. 55">
+    </div>
+
+    <button onclick="calculateCaps()">Calculate Missing Stats</button>
+
+    <div class="result" id="resultsBox">
+        <div id="armorResult"></div>
+        <div id="resistResult"></div>
+    </div>
+
+    <div class="adsense-placeholder">
+        [Google AdSense Ad Block Will Go Here] <br>
+        Width: 100% | Height: Auto
+    </div>
+</div>
+
+<script>
+    function calculateCaps() {
+        const armorInput = document.getElementById('armor').value;
+        const resistInput = document.getElementById('resist').value;
+        const resultsBox = document.getElementById('resultsBox');
+        const armorResult = document.getElementById('armorResult');
+        const resistResult = document.getElementById('resistResult');
+
+        const armorCap = 9230;
+        const resistCap = 70;
+
+        resultsBox.style.display = 'block';
+
+        // Armor Calculation
+        if (!armorInput) {
+            armorResult.innerHTML = "Armor: Please enter a value.";
+            armorResult.className = "";
+        } else if (armorInput >= armorCap) {
+            armorResult.innerHTML = `Armor: <span class="capped">CAPPED!</span> You can drop ${armorInput - armorCap} armor for other stats.`;
+        } else {
+            armorResult.innerHTML = `Armor: <span class="under">UNDER CAP.</span> You need ${armorCap - armorInput} more armor.`;
+        }
+
+        // Resistance Calculation
+        if (!resistInput) {
+            resistResult.innerHTML = "Resistance: Please enter a value.";
+            resistResult.className = "";
+        } else if (resistInput >= resistCap) {
+            resistResult.innerHTML = `Resistance: <span class="capped">CAPPED!</span> You are at or above the 70% max.`;
+        } else {
+            resistResult.innerHTML = `Resistance: <span class="under">UNDER CAP.</span> You need ${resistCap - resistInput}% more on your lowest element.`;
+        }
+    }
+</script>
+
+</body>
+</html>
