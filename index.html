@@ -3,113 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diablo 4 Endgame Stat Calculator</title>
+    <title>Diablo 4 Torment 4 Stat Checker</title>
     <style>
+        :root {
+            --primary-red: #b71c1c;
+            --accent-red: #f05545;
+            --dark-bg: #0b0b0b;
+            --panel-bg: #161616;
+            --text-main: #e0e0e0;
+            --text-muted: #888;
+            --border-color: #333;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #111;
-            color: #eee;
+            background-color: var(--dark-bg);
+            background-image: radial-gradient(circle at top, #2b0a0a 0%, var(--dark-bg) 60%);
+            color: var(--text-main);
             margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
         }
+
         .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: #222;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #444;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+            max-width: 550px;
+            width: 100%;
+            background-color: var(--panel-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.9);
         }
+
         h1 {
             text-align: center;
-            color: #c81e1e;
-            font-size: 24px;
+            color: var(--primary-red);
+            font-size: 28px;
             margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
         }
-        p.subtitle {
-            text-align: center;
-            font-size: 14px;
-            color: #aaa;
+
+        .instructions {
+            background-color: #1f1414;
+            border-left: 4px solid var(--primary-red);
+            padding: 15px;
             margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 1.5;
+            border-radius: 0 4px 4px 0;
         }
+
+        .instructions h3 {
+            margin-top: 0;
+            color: var(--accent-red);
+            font-size: 16px;
+        }
+
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
+
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: bold;
-            font-size: 14px;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            background-color: #333;
-            color: #fff;
-            border: 1px solid #555;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #c81e1e;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        button:hover {
-            background-color: #a01515;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #2a2a2a;
-            border: 1px solid #555;
-            border-radius: 4px;
-            display: none;
-        }
-        .result div {
-            margin-bottom: 10px;
+            color: #ccc;
             font-size: 15px;
         }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: #d32f2f;
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            display: none;
+        }
+
+        .result div {
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
         .capped { color: #4caf50; font-weight: bold; }
         .under { color: #ff9800; font-weight: bold; }
         
         .adsense-placeholder {
-            margin-top: 25px;
-            padding: 20px;
+            margin-top: 30px;
+            padding: 25px;
             text-align: center;
-            background-color: #333;
-            border: 1px dashed #777;
-            color: #aaa;
-            font-size: 12px;
+            background-color: #000;
+            border: 1px dashed #555;
+            color: var(--text-muted);
+            font-size: 13px;
+            border-radius: 6px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>D4 Stat Cap Calculator</h1>
-    <p class="subtitle">Quickly check how much more Armor or Resistance you need to hit the endgame caps.</p>
-
-    <div class="form-group">
-        <label for="armor">Current Total Armor (Cap: 9,230)</label>
-        <input type="number" id="armor" placeholder="e.g. 8500">
+    <h1>T4 Defense Tracker</h1>
+    
+    <div class="instructions">
+        <h3>How to use this tool</h3>
+        <p>With the recent defense overhauls, hard caps are gone. For <strong>Torment 4</strong> endgame content, you want to aim for the practical diminishing-return caps to maximize your Toughness without wasting stats.</p>
+        <ol>
+            <li>Open your character's stat sheet in-game.</li>
+            <li>Enter your current <strong>Total Armor</strong>.</li>
+            <li>Enter your <strong>lowest</strong> Elemental Resistance percentage.</li>
+            <li>Hit calculate to see how far you are from the T4 sweet spot (~13,350 Armor and 85% Resistances).</li>
+        </ol>
     </div>
 
     <div class="form-group">
-        <label for="resist">Lowest Elemental Resistance % (Cap: 70%)</label>
-        <input type="number" id="resist" placeholder="e.g. 55">
+        <label for="armor">Current Total Armor (T4 Target: ~13,350)</label>
+        <input type="number" id="armor" placeholder="e.g. 11500">
     </div>
 
-    <button onclick="calculateCaps()">Calculate Missing Stats</button>
+    <div class="form-group">
+        <label for="resist">Lowest Elemental Resistance % (T4 Target: ~85%)</label>
+        <input type="number" id="resist" placeholder="e.g. 70">
+    </div>
+
+    <button onclick="calculateCaps()">Check T4 Readiness</button>
 
     <div class="result" id="resultsBox">
         <div id="armorResult"></div>
@@ -130,29 +192,28 @@
         const armorResult = document.getElementById('armorResult');
         const resistResult = document.getElementById('resistResult');
 
-        const armorCap = 9230;
-        const resistCap = 70;
+        // Updated Torment 4 Practical Caps
+        const armorCap = 13350;
+        const resistCap = 85;
 
         resultsBox.style.display = 'block';
 
         // Armor Calculation
         if (!armorInput) {
-            armorResult.innerHTML = "Armor: Please enter a value.";
-            armorResult.className = "";
+            armorResult.innerHTML = "<strong>Armor:</strong> Please enter a value.";
         } else if (armorInput >= armorCap) {
-            armorResult.innerHTML = `Armor: <span class="capped">CAPPED!</span> You can drop ${armorInput - armorCap} armor for other stats.`;
+            armorResult.innerHTML = `<strong>Armor:</strong> <span class="capped">OPTIMAL!</span> You are at or above the T4 practical cap. Focus your remaining stats on Maximum Life or Barrier.`;
         } else {
-            armorResult.innerHTML = `Armor: <span class="under">UNDER CAP.</span> You need ${armorCap - armorInput} more armor.`;
+            armorResult.innerHTML = `<strong>Armor:</strong> <span class="under">NEEDS WORK.</span> You need roughly ${armorCap - armorInput} more armor to comfortably handle physical damage in Torment 4.`;
         }
 
         // Resistance Calculation
         if (!resistInput) {
-            resistResult.innerHTML = "Resistance: Please enter a value.";
-            resistResult.className = "";
+            resistResult.innerHTML = "<strong>Resistance:</strong> Please enter a value.";
         } else if (resistInput >= resistCap) {
-            resistResult.innerHTML = `Resistance: <span class="capped">CAPPED!</span> You are at or above the 70% max.`;
+            resistResult.innerHTML = `<strong>Resistance:</strong> <span class="capped">OPTIMAL!</span> You have hit the ~85% diminishing return point. Stop stacking resistances!`;
         } else {
-            resistResult.innerHTML = `Resistance: <span class="under">UNDER CAP.</span> You need ${resistCap - resistInput}% more on your lowest element.`;
+            resistResult.innerHTML = `<strong>Resistance:</strong> <span class="under">NEEDS WORK.</span> You need ${resistCap - resistInput}% more on your lowest element to stop getting one-shot by magic.`;
         }
     }
 </script>
