@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D4 T4 Defense Tracker | Stat Caps & Armor Tool</title>
+    <title>D4 Torment 4 Defense Analyzer</title>
     
-    <meta name="description" content="A specialized utility for Diablo 4 players to track T4 defense caps, armor limits, and elemental resistances.">
-    <meta name="keywords" content="Diablo 4, D4, Armor Cap, Resistance Cap, T4 Defense, Masterworking">
-
+    <meta name="description" content="A specialized utility for Diablo 4 players to track T4 defense caps and armor limits.">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TZK8GWJY5C"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -17,119 +15,71 @@
     </script>
 
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0d0d0d;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 550px;
-            width: 100%;
-            box-sizing: border-box;
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #333;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        h1 {
-            text-align: center;
-            color: #ff3b30;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .input-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #aaa;
-        }
-        input {
-            width: 100%;
-            padding: 12px;
-            box-sizing: border-box;
-            background: #222;
-            border: 1px solid #444;
-            color: #fff;
-            border-radius: 6px;
-            font-size: 16px;
-        }
-        button {
-            width: 100%;
-            padding: 15px;
-            background: #ff3b30;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: 0.2s;
-        }
-        button:hover {
-            background: #e6352b;
-        }
-        #results {
-            margin-top: 25px;
-            padding: 20px;
-            background: #252525;
-            border-radius: 8px;
-            display: none;
-        }
-        .stat-row {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #333;
-        }
-        .stat-row:last-child {
-            border-bottom: none;
-        }
-        .warning { color: #ffb300; font-weight: bold; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #050505; color: #d1c4a8; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 600px; width: 100%; background: #111; padding: 30px; border-radius: 8px; border: 1px solid #222; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8); }
+        h1 { text-align: center; color: #ff3b30; text-transform: uppercase; letter-spacing: 3px; font-weight: 300; border-bottom: 1px solid #333; padding-bottom: 15px; }
+        
+        /* Instructions Section */
+        .instructions { background: #1a1a00; border-left: 4px solid #ffcc00; padding: 15px; margin-bottom: 25px; font-size: 0.85rem; color: #eee; }
+        .instructions b { color: #ffcc00; text-transform: uppercase; }
+
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #888; font-size: 0.75rem; text-transform: uppercase; }
+        input { width: 100%; padding: 12px; box-sizing: border-box; background: #000; border: 1px solid #444; color: #fff; border-radius: 4px; font-size: 16px; }
+        
+        button { width: 100%; padding: 15px; background: #ff3b30; color: white; border: none; border-radius: 4px; font-size: 1rem; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.2s; }
+        button:hover { background: #b01c1c; }
+
+        #results { margin-top: 25px; padding: 20px; background: #000; border-radius: 4px; display: none; border: 1px solid #222; }
+        .stat-row { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #111; }
+        .warning { color: #ffcc00; font-weight: bold; }
         .success { color: #4caf50; font-weight: bold; }
-        .hint { font-size: 0.8rem; color: #666; font-style: italic; margin-top: 5px; }
+        .hint { font-size: 0.75rem; color: #555; font-style: italic; margin-top: 8px; line-height: 1.4; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>T4 Defense Tracker</h1>
+    <h1>Torment 4 Analyzer</h1>
 
-    <div class="input-group">
-        <label>Current Armor:</label>
-        <input type="number" id="armorInput" placeholder="e.g. 8500">
+    <div class="instructions">
+        <b>Site Protocol:</b>
+        <p>1. Check your character sheet in Diablo 4.<br>
+           2. Enter your total Armor and your lowest Resistance value below.<br>
+           3. Hit 'Initiate Scan' to see how much gear you need to survive T4.</p>
     </div>
 
     <div class="input-group">
-        <label>Lowest Resistance (%):</label>
-        <input type="number" id="resInput" placeholder="e.g. 65">
+        <label>Current Armor</label>
+        <input type="number" id="armorInput" placeholder="9230 is the max...">
     </div>
 
-    <button onclick="calculateDefense()">Analyze Build</button>
+    <div class="input-group">
+        <label>Lowest Resistance (%)</label>
+        <input type="number" id="resInput" placeholder="70% is the goal...">
+    </div>
+
+    <button onclick="analyzeBuild()">Initiate Scan</button>
 
     <div id="results">
         <div class="stat-row">
             <div id="armorStatus"></div>
-            <div class="hint">Trivial Fact: Armor is capped at 9,230. Any point beyond that is wasted against Level 100+ enemies.</div>
+            <div class="hint"><b>Trivial Fact:</b> Since Season 4, Armor is hard-capped at 9,230. Having 10,000 armor gives the same benefit as 9,230.</div>
         </div>
         <div class="stat-row">
             <div id="resStatus"></div>
-            <div class="hint">Trivial Fact: Torment 4 applies a -100% penalty to all resistances.</div>
+            <div class="hint"><b>Trivial Fact:</b> Torment 4 hits you with a 100% resistance penalty. If you aren't capped at 70% after that penalty, you'll melt.</div>
         </div>
     </div>
 </div>
 
 <script>
-    function calculateDefense() {
+    function analyzeBuild() {
         const armor = document.getElementById('armorInput').value;
         const res = document.getElementById('resInput').value;
         const results = document.getElementById('results');
+        
+        if (!armor || !res) { alert("Enter your stats first, hero."); return; }
         
         results.style.display = 'block';
 
@@ -137,14 +87,14 @@
         if (armor >= 9230) {
             armorStatus.innerHTML = 'Armor: <span class="success">CAPPED</span>';
         } else {
-            armorStatus.innerHTML = 'Armor: <span class="warning">' + (9230 - armor) + ' Short</span>';
+            armorStatus.innerHTML = 'Armor: <span class="warning">' + (9230 - armor) + ' points below cap</span>';
         }
 
         const resStatus = document.getElementById('resStatus');
         if (res >= 70) {
             resStatus.innerHTML = 'Resistances: <span class="success">MAXED</span>';
         } else {
-            resStatus.innerHTML = 'Resistances: <span class="warning">' + (70 - res) + '% Short</span>';
+            resStatus.innerHTML = 'Resistances: <span class="warning">' + (70 - res) + '% below cap</span>';
         }
     }
 </script>
