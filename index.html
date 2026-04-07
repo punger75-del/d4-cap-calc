@@ -30,7 +30,6 @@
             max-width: 550px;
             width: 100%;
             box-sizing: border-box;
-            margin: 0 auto;
             background: #1a1a1a;
             padding: 30px;
             border-radius: 12px;
@@ -117,11 +116,11 @@
     <div id="results">
         <div class="stat-row">
             <div id="armorStatus"></div>
-            <div class="hint">Trivial Fact: Armor is capped at 9,230. Any point beyond that is 100% wasted against Level 100+ enemies.</div>
+            <div class="hint">Trivial Fact: Armor is capped at 9,230. Any point beyond that is wasted against Level 100+ enemies.</div>
         </div>
         <div class="stat-row">
             <div id="resStatus"></div>
-            <div class="hint">Trivial Fact: Torment 4 applies a massive -100% penalty to all your resistances.</div>
+            <div class="hint">Trivial Fact: Torment 4 applies a -100% penalty to all resistances.</div>
         </div>
     </div>
 </div>
@@ -134,7 +133,6 @@
         
         results.style.display = 'block';
 
-        // Armor Logic
         const armorStatus = document.getElementById('armorStatus');
         if (armor >= 9230) {
             armorStatus.innerHTML = 'Armor: <span class="success">CAPPED</span>';
@@ -142,7 +140,6 @@
             armorStatus.innerHTML = 'Armor: <span class="warning">' + (9230 - armor) + ' Short</span>';
         }
 
-        // Res Logic
         const resStatus = document.getElementById('resStatus');
         if (res >= 70) {
             resStatus.innerHTML = 'Resistances: <span class="success">MAXED</span>';
