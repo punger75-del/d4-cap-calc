@@ -1,287 +1,188 @@
 <!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>HATE'S GAZE | Expansion 2 Analyzer</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/symbols-outlined" rel="stylesheet"/>
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>OSSUARY PROTOCOL | Torment 4 Analyzer</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
-                        "tertiary-container": "#9b9076",
-                        "on-secondary": "#3d2f00",
-                        "primary-fixed": "#ffdad5",
-                        "tertiary": "#d2c5a9",
-                        "surface-container-highest": "#353534",
-                        "on-tertiary": "#37301c",
-                        "inverse-primary": "#c0000a",
-                        "error-container": "#93000a",
-                        "on-error-container": "#ffdad6",
-                        "primary-fixed-dim": "#ffb4aa",
-                        "secondary-container": "#fecb00",
-                        "tertiary-fixed": "#efe1c4",
-                        "secondary": "#ffecc0",
-                        "secondary-fixed-dim": "#f1c100",
-                        "on-surface": "#e5e2e1",
-                        "primary-container": "#ff5545",
-                        "error": "#ffb4ab",
-                        "surface-container": "#201f1f",
-                        "on-tertiary-container": "#302916",
-                        "on-primary-container": "#5c0002",
-                        "on-primary-fixed": "#410001",
-                        "surface": "#131313",
-                        "on-tertiary-fixed-variant": "#4f4631",
-                        "on-primary-fixed-variant": "#930005",
-                        "surface-tint": "#ffb4aa",
-                        "surface-container-lowest": "#0e0e0e",
-                        "on-primary": "#690003",
-                        "surface-variant": "#353534",
-                        "inverse-surface": "#e5e2e1",
-                        "on-secondary-fixed": "#241a00",
-                        "on-background": "#e5e2e1",
-                        "secondary-fixed": "#ffe08b",
-                        "on-secondary-fixed-variant": "#584400",
-                        "on-secondary-container": "#6e5700",
-                        "on-error": "#690005",
-                        "primary": "#ffb4aa",
-                        "on-surface-variant": "#e7bdb7",
-                        "inverse-on-surface": "#313030",
-                        "background": "#131313",
-                        "outline": "#ad8883",
-                        "surface-dim": "#131313",
-                        "surface-bright": "#3a3939",
-                        "outline-variant": "#5d3f3b",
-                        "surface-container-low": "#1c1b1b",
-                        "tertiary-fixed-dim": "#d2c5a9",
-                        "surface-container-high": "#2a2a2a",
-                        "on-tertiary-fixed": "#211b09"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0px",
-                        "lg": "0px",
-                        "xl": "0px",
-                        "full": "9999px"
-                    },
-                    "fontFamily": {
-                        "headline": ["Space Grotesk"],
-                        "body": ["Inter"],
-                        "label": ["Space Grotesk"]
+                    colors: {
+                        "primary": "#00f2ff", // Mephisto Cyan
+                        "primary-container": "#004e52",
+                        "surface": "#05070a",
+                        "surface-container": "#0d1117",
+                        "on-surface": "#e0f2f1",
+                        "accent": "#7000ff" // Hatred Purple
                     }
-                },
-            },
+                }
+            }
         }
     </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body {
-            background-color: #131313;
-            color: #e5e2e1;
-            font-family: 'Inter', sans-serif;
-        }
-        .gothic-glow {
-            box-shadow: 0 0 20px rgba(255, 85, 69, 0.2);
-        }
-        .ember-text {
-            text-shadow: 0 0 8px rgba(254, 203, 0, 0.4);
-        }
+
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { background-color: #05070a; color: #e0f2f1; font-family: 'Inter', sans-serif; }
+        .hatred-glow { box-shadow: 0 0 25px rgba(0, 242, 255, 0.15); }
+        .cyan-ember { text-shadow: 0 0 10px rgba(0, 242, 255, 0.5); }
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
     </style>
 </head>
-<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopAppBar -->
-<header class="bg-stone-950/90 backdrop-blur-xl text-red-500 font-['Space_Grotesk'] uppercase tracking-tighter docked full-width top-0 z-50 border-b border-stone-800/50 shadow-[0_4px_30_rgba(255,59,48,0.1)] fixed w-full">
-<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
-<div class="flex items-center gap-4">
-<span class="text-2xl font-black text-red-600 dark:text-red-500 tracking-widest">OSSUARY PROTOCOL</span>
-</div>
-<nav class="hidden md:flex items-center space-x-8">
-<a class="text-amber-400 font-bold hover:text-red-400 transition-colors duration-300" href="#">Sanctuary Core</a>
-<a class="text-stone-500 hover:text-red-400 transition-colors duration-300" href="#">Grimoire</a>
-<a class="text-stone-500 hover:text-red-400 transition-colors duration-300" href="#">Rituals</a>
-</nav>
-<div class="flex items-center space-x-4">
-<span class="material-symbols-outlined hover:text-red-400 transition-colors cursor-pointer">security</span>
-<span class="material-symbols-outlined hover:text-red-400 transition-colors cursor-pointer">history</span>
-<div class="w-8 h-8 bg-stone-800 border border-stone-700 overflow-hidden">
-<img alt="nephalem_avatar" class="w-full h-full object-cover grayscale opacity-80" data-alt="profile avatar of a mysterious dark hooded figure in a gothic medieval setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs7FRYhLqc1PZZOyhqwZDy5UgiZtFAsSTl1ASSU8_OVd9tcFEqmfiEpUGa55L4ZYM-mMlTt80YIIrwRUAPncjGdy-DuvWD8k_0TZr_Kl5EP0-ILEfh7pJvPAu1SkGcmnHNJ41R6C-M5vF4--MjdIITKShjPi8kh9FR3rf_iCkprAAjN7pjvPsYRNSWpBlZ9lpmtGgTCCWKq-zJ-wUdaR_Xfs6-fQm0PBvy7Yp0S_5N4jf9jj5GLwnxOh3jnCu9gY72WwlIwmeLz5c"/>
-</div>
-</div>
-</div>
+
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-primary">
+
+<header class="bg-slate-950/90 backdrop-blur-xl text-primary font-['Space_Grotesk'] uppercase tracking-widest fixed top-0 w-full z-50 border-b border-cyan-900/30 shadow-[0_4px_30px_rgba(0,242,255,0.05)]">
+    <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+        <div class="flex items-center gap-4">
+            <span class="text-2xl font-black cyan-ember">HATE'S GAZE</span>
+            <span class="text-[10px] bg-cyan-900/30 px-2 py-1 rounded border border-cyan-500/50">EXPANSION II READY</span>
+        </div>
+        <nav class="hidden md:flex space-x-8 text-sm font-bold">
+            <a class="text-primary hover:text-white transition-colors" href="#">Analyzer</a>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="#">Paladin Grimoire</a>
+            <a class="text-slate-500 hover:text-primary transition-colors" href="#">Warlock Rites</a>
+        </nav>
+    </div>
 </header>
-<!-- SideNav (Desktop) -->
-<aside class="fixed left-0 top-0 h-full z-40 hidden md:flex flex-col bg-stone-950 text-amber-500 font-['Space_Grotesk'] text-sm tracking-widest docked h-full w-64 border-r border-stone-900 divide-y divide-stone-900">
-<div class="p-8 flex flex-col items-center justify-center pt-24 pb-12">
-<div class="w-16 h-16 mb-4 border-2 border-red-900/50 flex items-center justify-center p-2">
-<img alt="ritual_sigil" class="w-full h-full object-contain grayscale brightness-75" data-alt="ancient occult ritual sigil glowing with faint red ember light on dark stone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt8jmAsgO5OD22RiesQzwXfBrRjfrkxGts1or4H2UctFD9sVUryM-LMIUrm6S2B2ZrxD1pusaJrAJSUM8mCVnLbDjUWRbgVTNQMgr6ICljst-IpJsW7pkCtPdDkCVtOBsaJ5Tsb57VljFqNxai9KFMcCjZsYEIZHzwstLepBNfMx-bd1YcxdeYfcmT2z7jDdTm3IViw5MyiwUYf83Cs8lS_8GjiPsbTJx1n9JRZlrgLgdfii15g3Ceckz7HBEfIFvRleztvS8glVU"/>
-</div>
-<h2 class="text-amber-500 font-bold tracking-[0.2em]">GRIMOIRE</h2>
-<p class="text-[10px] text-stone-600">V1.0.4 HELLFIRE</p>
-</div>
-<nav class="flex-1 py-6">
-<div class="flex items-center px-6 py-4 text-amber-400 border-l-4 border-red-600 bg-stone-900/40 transition-all duration-200 ease-in-out">
-<span class="material-symbols-outlined mr-4">shield_person</span>
-<span>Sanctuary Core</span>
-</div>
-<div class="flex items-center px-6 py-4 text-stone-600 hover:bg-stone-900 hover:text-stone-200 transition-all duration-200 ease-in-out cursor-pointer">
-<span class="material-symbols-outlined mr-4">flare</span>
-<span>Resistance Grimoire</span>
-</div>
-<div class="flex items-center px-6 py-4 text-stone-600 hover:bg-stone-900 hover:text-stone-200 transition-all duration-200 ease-in-out cursor-pointer">
-<span class="material-symbols-outlined mr-4">hardware</span>
-<span>Armor Rituals</span>
-</div>
-<div class="flex items-center px-6 py-4 text-stone-600 hover:bg-stone-900 hover:text-stone-200 transition-all duration-200 ease-in-out cursor-pointer">
-<span class="material-symbols-outlined mr-4">inventory_2</span>
-<span>Loot Archive</span>
-</div>
-</nav>
-<div class="p-6 space-y-4">
-<button class="w-full py-3 bg-red-900/20 border border-red-600/40 text-red-500 font-bold text-xs tracking-widest hover:bg-red-600 hover:text-white transition-all duration-300">
-                SACRIFICE DATA
-            </button>
-<div class="flex flex-col space-y-2 opacity-50">
-<div class="flex items-center space-x-2 text-xs">
-<span class="material-symbols-outlined text-sm">settings</span>
-<span>Settings</span>
-</div>
-<div class="flex items-center space-x-2 text-xs">
-<span class="material-symbols-outlined text-sm">terminal</span>
-<span>Abyss Log</span>
-</div>
-</div>
-</div>
-</aside>
-<!-- Main Content Area -->
-<main class="min-h-screen pt-28 pb-32 md:pb-12 md:pl-64 flex flex-col items-center justify-center px-4 relative overflow-hidden bg-surface-container-lowest">
-<!-- Ambient Background Decoration -->
-<div class="absolute inset-0 z-0 pointer-events-none opacity-20">
-<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-red-900/40 rounded-full blur-[120px]"></div>
-<div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-amber-900/20 rounded-full blur-[150px]"></div>
-</div>
-<div class="relative z-10 w-full max-w-4xl space-y-12">
-<!-- Page Header -->
-<div class="text-center space-y-4">
-<h1 class="text-6xl md:text-8xl font-black font-headline text-on-surface tracking-tighter uppercase">
-                    Torment 4 <span class="text-primary-container">Analyzer</span>
-</h1>
-<p class="text-tertiary font-body max-w-xl mx-auto text-lg leading-relaxed">
-                    Verify your soul's resilience before descending into the final pit. Calculations calibrated for the Hellfire Torment patch.
-                </p>
-</div>
-<!-- Bento Analyzer Interface -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-<!-- Left: Site Protocol / Instructions (Ancient Scroll Style) -->
-<div class="md:col-span-4 bg-surface-container border-l-4 border-tertiary-container p-8 space-y-6 shadow-2xl relative">
-<div class="absolute top-0 right-0 w-16 h-16 border-t border-r border-tertiary-container/30"></div>
-<div class="space-y-2">
-<span class="text-tertiary-fixed font-headline text-xs tracking-widest uppercase font-bold">Document v1.4</span>
-<h3 class="text-2xl font-headline text-secondary tracking-tight">SITE PROTOCOL</h3>
-</div>
-<ul class="space-y-4 text-sm text-tertiary leading-relaxed font-body">
-<li class="flex gap-3">
-<span class="text-primary font-bold">01.</span>
-                            Enter your Current Armor rating (Cap: 9230). Excess is vanity.
-                        </li>
-<li class="flex gap-3">
-<span class="text-primary font-bold">02.</span>
-                            Input your lowest resistance percentage. Torment 4 demands sacrifice.
-                        </li>
-<li class="flex gap-3">
-<span class="text-primary font-bold">03.</span>
-                            Initiate the Scan to determine if your rituals are complete.
-                        </li>
-</ul>
-<div class="pt-8 border-t border-stone-800 flex items-center gap-4">
-<span class="material-symbols-outlined text-amber-500" style="font-variation-settings: 'FILL' 1;">warning</span>
-<span class="text-[10px] text-stone-500 uppercase tracking-widest font-headline">Penalty: -1000 Armor / -250 Resists</span>
-</div>
-</div>
-<!-- Right: Calculation Input (Heavy Metal Panel) -->
-<div class="md:col-span-8 bg-surface-container-low p-10 border border-stone-800 shadow-inner flex flex-col justify-between">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-<!-- Armor Input -->
-<div class="space-y-4">
-<label class="block text-secondary-fixed-dim font-headline font-bold uppercase tracking-widest text-xs">
-                                Current Armor
-                            </label>
-<div class="relative group">
-<input class="w-full bg-surface-container-lowest border-b-2 border-stone-800 focus:border-primary-container text-4xl font-headline py-4 px-0 outline-none transition-colors text-on-surface placeholder:text-stone-800" max="9230" placeholder="9230" type="number"/>
-<span class="absolute right-0 bottom-4 text-stone-600 font-headline text-xl">MAX</span>
-<div class="h-[1px] w-0 group-focus-within:w-full bg-primary-container transition-all duration-500"></div>
-</div>
-</div>
-<!-- Resistance Input -->
-<div class="space-y-4">
-<label class="block text-secondary-fixed-dim font-headline font-bold uppercase tracking-widest text-xs">
-                                Lowest Resistance (%)
-                            </label>
-<div class="relative group">
-<input class="w-full bg-surface-container-lowest border-b-2 border-stone-800 focus:border-secondary-container text-4xl font-headline py-4 px-0 outline-none transition-colors text-on-surface placeholder:text-stone-800" max="100" placeholder="70" type="number"/>
-<span class="absolute right-0 bottom-4 text-stone-600 font-headline text-xl">%</span>
-<div class="h-[1px] w-0 group-focus-within:w-full bg-secondary-container transition-all duration-500"></div>
-</div>
-</div>
-</div>
-<!-- Scan Button (Ritual Seal) -->
-<button class="group relative w-full h-24 flex items-center justify-center bg-stone-900 border border-stone-700 overflow-hidden active:scale-95 transition-all">
-<div class="absolute inset-0 bg-primary-container/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-<div class="relative z-10 flex items-center gap-6">
-<span class="material-symbols-outlined text-4xl text-primary transition-transform group-hover:rotate-180 duration-500">android_fingerprint</span>
-<span class="text-3xl font-headline font-black uppercase tracking-[0.3em] text-on-surface group-hover:text-primary transition-colors">Initiate Scan</span>
-</div>
-<div class="absolute top-0 left-0 w-2 h-full bg-primary transition-all group-hover:w-full opacity-5"></div>
-</button>
-</div>
-</div>
-<!-- Footer Stats Grid (Glassmorphism Cards) -->
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<div class="bg-surface-container-high/40 backdrop-blur-md p-6 border border-stone-800 space-y-2">
-<span class="text-[10px] text-stone-500 font-bold uppercase tracking-widest">DR Requirement</span>
-<p class="text-2xl font-headline text-on-surface">85% <span class="text-stone-600 text-sm">MIN</span></p>
-</div>
-<div class="bg-surface-container-high/40 backdrop-blur-md p-6 border border-stone-800 space-y-2">
-<span class="text-[10px] text-stone-500 font-bold uppercase tracking-widest">Monster Level</span>
-<p class="text-2xl font-headline text-on-surface">154</p>
-</div>
-<div class="bg-surface-container-high/40 backdrop-blur-md p-6 border border-stone-800 space-y-2 border-b-primary">
-<span class="text-[10px] text-primary-container font-bold uppercase tracking-widest">Penalty Applied</span>
-<p class="text-2xl font-headline text-primary">-100%</p>
-</div>
-<div class="bg-surface-container-high/40 backdrop-blur-md p-6 border border-stone-800 space-y-2">
-<span class="text-[10px] text-secondary font-bold uppercase tracking-widest">Shard Status</span>
-<p class="text-2xl font-headline text-secondary">ACTIVE</p>
-</div>
-</div>
-</div>
+
+<main class="min-h-screen pt-32 pb-12 flex flex-col items-center px-4 relative overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-30">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-900/20 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[150px]"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-4xl space-y-8">
+        <div class="text-center space-y-2">
+            <h1 class="text-5xl md:text-7xl font-black font-headline tracking-tighter uppercase">
+                Torment <span class="text-primary">Analyzer</span>
+            </h1>
+            <p class="text-slate-400 font-body max-w-xl mx-auto text-sm">
+                Calibrated for Patch 3.0.0. Calculate your survivability before the Lord of Hatred claims your soul.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <div class="md:col-span-8 bg-surface-container hatred-glow p-8 border border-cyan-900/30 space-y-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-3">
+                        <label class="text-[10px] text-cyan-500 font-bold uppercase tracking-widest">Select Class</label>
+                        <select id="classSelect" class="w-full bg-slate-900 border-b-2 border-slate-800 text-white py-3 outline-none focus:border-primary transition-colors">
+                            <option value="generic">Standard Nephalem</option>
+                            <option value="paladin">Paladin (Shield-Bearing)</option>
+                            <option value="warlock">Warlock (Shadow-Bound)</option>
+                            <option value="spiritborn">Spiritborn</option>
+                            <option value="barbarian">Barbarian</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="text-[10px] text-cyan-500 font-bold uppercase tracking-widest">Current Armor</label>
+                        <div class="relative group">
+                            <input id="armorInput" class="w-full bg-transparent border-b-2 border-slate-800 focus:border-primary text-4xl font-headline py-2 outline-none text-white placeholder:text-slate-800" placeholder="9230" type="number">
+                            <span class="absolute right-0 bottom-3 text-slate-600 font-headline">LVL 75+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <label class="text-[10px] text-cyan-500 font-bold uppercase tracking-widest">Lowest Resistance (%)</label>
+                    <div class="relative group">
+                        <input id="resInput" class="w-full bg-transparent border-b-2 border-slate-800 focus:border-primary text-4xl font-headline py-2 outline-none text-white placeholder:text-70" type="number">
+                        <span class="absolute right-0 bottom-3 text-slate-600 font-headline">%</span>
+                    </div>
+                </div>
+
+                <button onclick="analyzeBuild()" class="w-full h-20 flex items-center justify-center bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-black text-2xl uppercase tracking-[0.2em] transition-all transform active:scale-95">
+                    Initiate Scan
+                </button>
+            </div>
+
+            <div class="md:col-span-4 bg-slate-950 p-6 border-l-4 border-primary border border-cyan-900/20 space-y-4">
+                <h3 class="text-xl font-headline text-primary">SITE PROTOCOL</h3>
+                <ul class="text-xs text-slate-400 space-y-4 leading-relaxed">
+                    <li><b class="text-white">ARMOR:</b> The hard cap is 9,230. Any point beyond this is wasted in the current meta.</li>
+                    <li><b class="text-white">RESIST:</b> Torment 4 imposes a <span class="text-red-500 font-bold">-100% penalty</span>. 70% is your survival floor.</li>
+                    <li><b class="text-white">EXPANSION:</b> New Class passives (Paladin/Warlock) now factor into mitigation math.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="results" class="hidden grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div class="bg-cyan-950/20 border border-cyan-500/30 p-6">
+                <div id="armorStatus" class="text-2xl font-headline uppercase"></div>
+                <p id="armorHint" class="text-[10px] text-slate-500 mt-2 uppercase"></p>
+            </div>
+            <div class="bg-purple-950/20 border border-purple-500/30 p-6">
+                <div id="resStatus" class="text-2xl font-headline uppercase"></div>
+                <p id="resHint" class="text-[10px] text-slate-500 mt-2 uppercase"></p>
+            </div>
+            <div id="classTip" class="md:col-span-2 bg-slate-900/50 border border-slate-800 p-4 text-xs text-center italic text-primary"></div>
+        </div>
+    </div>
 </main>
-<!-- BottomNavBar (Mobile) -->
-<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 md:hidden pb-safe bg-stone-950/95 backdrop-blur-md border-t border-stone-800 shadow-[0_-10px_40px_rgba(0,0,0,0.8)]">
-<div class="flex flex-col items-center justify-center text-stone-600 py-2 hover:text-red-500 active:scale-90 duration-150 cursor-pointer">
-<span class="material-symbols-outlined">calculate</span>
-<span class="font-['Space_Grotesk'] text-[10px] uppercase font-bold">Ritual</span>
-</div>
-<div class="flex flex-col items-center justify-center text-amber-400 bg-stone-900/60 py-2 active:scale-90 duration-150 cursor-pointer">
-<span class="material-symbols-outlined">menu_book</span>
-<span class="font-['Space_Grotesk'] text-[10px] uppercase font-bold">Grimoire</span>
-</div>
-<div class="flex flex-col items-center justify-center text-stone-600 py-2 hover:text-red-500 active:scale-90 duration-150 cursor-pointer">
-<span class="material-symbols-outlined">android_fingerprint</span>
-<span class="font-['Space_Grotesk'] text-[10px] uppercase font-bold">Scan</span>
-</div>
-<div class="flex flex-col items-center justify-center text-stone-600 py-2 hover:text-red-500 active:scale-90 duration-150 cursor-pointer">
-<span class="material-symbols-outlined">storage</span>
-<span class="font-['Space_Grotesk'] text-[10px] uppercase font-bold">Archive</span>
-</div>
-</nav>
-<!-- Visual Polish: Corner Decoration -->
-<div class="fixed bottom-0 right-0 w-64 h-64 pointer-events-none z-0">
-<img alt="stone_decoration" class="w-full h-full object-cover opacity-10 mix-blend-overlay rotate-180" data-alt="close-up of ancient weathered obsidian stone texture with sharp jagged edges and deep cracks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnjrbmikBKY-S-dp0X0w9SpgobsdhDAlSkXz7UoGJxZUdW4BVUOMlo184lQwrD2wgyGwzlnXVePgJYAiv7WNlVIBE9AGfgffHewtiTCzEumsbR5OC8CSaKJTTnvX54Q3BvhtEUxXA8vabi1qK8DaG14ZWHFD55iIq1cYja9pyWlHRRqsvyEKwmfAkN9s2NU8HdvehWQM_GnYIP0mwZA96-k7IsDNOBx1kppTJm_lhbZg7WsH7mojCxGoYJSaNRIchsc9ptuMIUiD4"/>
-</div>
-</body></html>
+
+<script>
+    function analyzeBuild() {
+        const armor = parseInt(document.getElementById('armorInput').value);
+        const res = parseInt(document.getElementById('resInput').value);
+        const playerClass = document.getElementById('classSelect').value;
+        const results = document.getElementById('results');
+        
+        if (isNaN(armor) || isNaN(res)) { 
+            alert("The Abyss requires numbers, Nephalem."); 
+            return; 
+        }
+        
+        results.classList.remove('hidden');
+
+        // Armor Logic
+        const armorStatus = document.getElementById('armorStatus');
+        const armorHint = document.getElementById('armorHint');
+        if (armor >= 9230) {
+            armorStatus.innerHTML = '<span class="text-primary">Armor Capped</span>';
+            armorHint.innerText = "Trivial Fact: You've reached the 85% Physical DR limit.";
+        } else {
+            armorStatus.innerHTML = `<span class="text-red-500">${9230 - armor} Below Cap</span>`;
+            armorHint.innerText = "You are taking increased physical damage in Torment 4.";
+        }
+
+        // Resistance Logic
+        const resStatus = document.getElementById('resStatus');
+        const resHint = document.getElementById('resHint');
+        if (res >= 70) {
+            resStatus.innerHTML = '<span class="text-primary">Resistances Maxed</span>';
+            resHint.innerText = "Trivial Fact: You have neutralized the -100% Torment penalty.";
+        } else {
+            resStatus.innerHTML = `<span class="text-red-500">${70 - res}% Deficiency</span>`;
+            resHint.innerText = "T4 environmental damage will likely one-shot you.";
+        }
+
+        // Class Specific Logic
+        const classTip = document.getElementById('classTip');
+        let tipText = "";
+        switch(playerClass) {
+            case 'paladin':
+                tipText = "Paladin detected: Ensure your Block Chance is at least 40% to supplement your Armor cap.";
+                break;
+            case 'warlock':
+                tipText = "Warlock detected: Your 'Soul Barrier' scales with Shadow Resistance. Consider over-capping to 85%.";
+                break;
+            case 'spiritborn':
+                tipText = "Spiritborn detected: Your Resolve stacks provide 5% hidden DR per stack.";
+                break;
+            default:
+                tipText = "Stay vigilant. The Cathedral of Hatred opens its doors soon.";
+        }
+        classTip.innerText = tipText;
+    }
+</script>
+
+</body>
+</html>
